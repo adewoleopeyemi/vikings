@@ -2,7 +2,7 @@ var kingslumToken = artifacts.require('kingslumToken');
 
 contract('kingslumToken', function(accounts) {
 	it('sets the total supply upon deployment', function(){
-		return kingslumToken().deployed().then(function(instance){
+		return kingslumToken.deployed().then(function(instance){
 			tokenInstance = instance;
 			return tokenInstance.totalSupply();
 		}).then(function(totalSupply){
