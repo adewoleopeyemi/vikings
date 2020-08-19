@@ -1,6 +1,6 @@
-const kingslumToken = artifacts.require("kingslumToken");
+const kingslimToken = artifacts.require("kingslimToken");
 
 module.exports = function (deployer) {
-  deployer.deploy(kingslumToken, 1000000);
+  deployer.deploy(kingslimToken, 1000000);
 };
  

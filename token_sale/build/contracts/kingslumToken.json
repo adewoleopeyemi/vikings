@@ -1,5 +1,5 @@
 {
-  "contractName": "kingslumToken",
+  "contractName": "kingslimToken",
   "abi": [
     {
       "inputs": [],
@@ -23,17 +23,17 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/adewole opeyemi/token_sale/contracts/kingslumToken.sol\":\"kingslumToken\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/adewole opeyemi/token_sale/contracts/kingslumToken.sol\":{\"keccak256\":\"0xb8238ba980a40a801f3cfab19d7000518f2ce014176703e1c0134844b4eb3e13\",\"urls\":[\"bzz-raw://e74a65aa3200ca5c4244c373c0f8063c3fc0799e171a5b5d2d9cd19c15665bc8\",\"dweb:/ipfs/QmPDJru2oXb2dqzJnetpvEhJJLNebQBWP2YyqU87VBUfNc\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/adewole opeyemi/token_sale/contracts/kingslimToken.sol\":\"kingslimToken\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/adewole opeyemi/token_sale/contracts/kingslimToken.sol\":{\"keccak256\":\"0xb8238ba980a40a801f3cfab19d7000518f2ce014176703e1c0134844b4eb3e13\",\"urls\":[\"bzz-raw://e74a65aa3200ca5c4244c373c0f8063c3fc0799e171a5b5d2d9cd19c15665bc8\",\"dweb:/ipfs/QmPDJru2oXb2dqzJnetpvEhJJLNebQBWP2YyqU87VBUfNc\"]}},\"version\":1}",
   "bytecode": "0x6080604052348015600f57600080fd5b50620f42406000819055506084806100286000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c806318160ddd14602d575b600080fd5b60336049565b6040518082815260200191505060405180910390f35b6000548156fea265627a7a723158207a9a64a5c301b30ccb93ed48e3d859cb7a351ebf15804c0e85f7c1a406906fc764736f6c63430005100032",
   "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c806318160ddd14602d575b600080fd5b60336049565b6040518082815260200191505060405180910390f35b6000548156fea265627a7a723158207a9a64a5c301b30ccb93ed48e3d859cb7a351ebf15804c0e85f7c1a406906fc764736f6c63430005100032",
   "sourceMap": "28:184:1:-;;;156:53;8:9:-1;5:2;;;30:1;27;20:12;5:2;156:53:1;197:7;183:11;:21;;;;28:184;;;;;;",
   "deployedSourceMap": "28:184:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;28:184:1;;;;;;;;;;;;;;;;;;;124:26;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;:::o",
-  "source": "pragma solidity ^0.5.16;\r\n\r\ncontract kingslumToken{\r\n\t//constructor\r\n\t//set the tokens\r\n\t//read the total number of token\r\n\tuint256 public totalSupply;\r\n\r\n\tconstructor () public {\r\n\t\ttotalSupply = 1000000;\r\n\t}\r\n}",
-  "sourcePath": "C:/Users/adewole opeyemi/token_sale/contracts/kingslumToken.sol",
+  "source": "pragma solidity ^0.5.16;\r\n\r\ncontract kingslimToken{\r\n\t//constructor\r\n\t//set the tokens\r\n\t//read the total number of token\r\n\tuint256 public totalSupply;\r\n\r\n\tconstructor () public {\r\n\t\ttotalSupply = 1000000;\r\n\t}\r\n}",
+  "sourcePath": "C:/Users/adewole opeyemi/token_sale/contracts/kingslimToken.sol",
   "ast": {
-    "absolutePath": "/C/Users/adewole opeyemi/token_sale/contracts/kingslumToken.sol",
+    "absolutePath": "/C/Users/adewole opeyemi/token_sale/contracts/kingslimToken.sol",
     "exportedSymbols": {
-      "kingslumToken": [
+      "kingslimToken": [
         45
       ]
     },
@@ -61,7 +61,7 @@
         "linearizedBaseContracts": [
           45
         ],
-        "name": "kingslumToken",
+        "name": "kingslimToken",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
@@ -182,9 +182,9 @@
     "src": "0:212:1"
   },
   "legacyAST": {
-    "absolutePath": "/C/Users/adewole opeyemi/token_sale/contracts/kingslumToken.sol",
+    "absolutePath": "/C/Users/adewole opeyemi/token_sale/contracts/kingslimToken.sol",
     "exportedSymbols": {
-      "kingslumToken": [
+      "kingslimToken": [
         45
       ]
     },
@@ -212,7 +212,7 @@
         "linearizedBaseContracts": [
           45
         ],
-        "name": "kingslumToken",
+        "name": "kingslimToken",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
