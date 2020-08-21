@@ -82,16 +82,23 @@ contract('kingslimToken', function(accounts) {
 			toAccount = accounts[3];
 			spendingAccount = accounts[4];
 
-			return tokenInstance.transfer(fromAccount, 100, {from:account[0]});
+			return tokenInstance.transfer(fromAccount, 100, {from:accounts[0]});
 		}).then(function(receipt){
 			return tokenInstance.approve(spendingAccount, 10, {from: fromAccount});
 		}).then(function(receipt){
-			return tokenInstance.transferFrom(fromAccount, toAccount, 999, {from: spendingAccount});
-		}).then(assert.fail).catch(function(error){
-			assert(error.message.indexOf('revert') >= 0,'msg.value must be less than tokens tokenAvaliable');
-			return tokenInstance.transferFrom(fromAccount, toAccount, 20, {from: spendingAccount});
-		}).then(assert.fail).catch(function(error){
-			assert(error.message.indexOf('revert') >= 0,'cannot Transfer more than approved value');
+			return tokenInstance.transferFrom.call(fromAccount, toAccount, 10, {from:spendingAccount})
+		}).then(function(success){
+			assert.equal(success, true);
+			return tokenInstance.transferFrom(fromAccount, toAccount, 10, {from: spendingAccount});
+		}).then(function(receipt){
+			assert.equal(receipt.logs.length, 1, 'triggers one event');
+			assert.equal(receipt.logs[0].event, 'Transfer', 'triggers one event');
+			assert.equal(receipt.logs[0].args._from, fromAccount, 'logs the account the toknes are transferred from');
+			assert.equal(receipt.logs[0].args._to, toAccount, 'logs the transfer amount');
+			assert.equal(receipt.logs[0].args._value, 10, 'logs the transfer amount');
+			return tokenInstance.balanceOf(fromAccount);
+		}).then(function(balance){
+			assert.equal(parseInt(balance), 90, 'deducts the amount from the sending Account');	
 		});
 	})
 });
