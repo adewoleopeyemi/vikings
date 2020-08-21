@@ -18,7 +18,7 @@ contract('kingslimToken', function(accounts) {
 		});
 	});
 
-	it('sets the total alloctaes upon deployment', function() {
+	it('sets the total allocates upon deployment', function() {
 		return kingslimToken.deployed().then(function(instance){
 			tokenInstance = instance;
 			return tokenInstance.totalSupply();
@@ -59,17 +59,39 @@ contract('kingslimToken', function(accounts) {
 	it('approves tokens for delegated transfer', function() {
 		return kingslimToken.deployed().then(function(instance){
 			tokenInstance = instance;
-			return tokenInstance.approve.call(accounts[1], 100);
+			return tokenInstance.approve.call(accounts[1], 1);
 		}).then(function(success){
 			assert.equal(success, true, 'it returns true');
-			return tokenInstance.approve(accounts[1], 100);
+			return tokenInstance.approve(accounts[1], 1, {from:accounts[0]});
 		}).then(function(receipt){
 			assert.equal(receipt.logs.length, 1, 'triggers one event');
 			assert.equal(receipt.logs[0].event, 'Approval', 'triggers one event');
-			assert.equal(receipt.logs[0].args._from, accounts[0], 'logs the account the tokens are transferred from');
-			assert.equal(receipt.logs[0].args._to, accounts[1], 'logs the transfer amount');			
-			assert.equal(receipt.logs[0].args._value, 100, 'logs the transfer amount');
-			
+			assert.equal(receipt.logs[0].args._value, 1, 'logs the transfer amount');
+			return tokenInstance.allowance(accounts[0], accounts[1]
+				);
+		}).then(function(allowance){
+			assert.equal(parseInt(allowance), 1, 'stores the allowance for delegated transfer');
 		});
 	});
+
+
+	it('handles delegated token transfers', function(){
+		return kingslimToken.deployed().then(function(instance){
+			tokenInstance = instance;
+			fromAccount = accounts[2];
+			toAccount = accounts[3];
+			spendingAccount = accounts[4];
+
+			return tokenInstance.transfer(fromAccount, 100, {from:account[0]});
+		}).then(function(receipt){
+			return tokenInstance.approve(spendingAccount, 10, {from: fromAccount});
+		}).then(function(receipt){
+			return tokenInstance.transferFrom(fromAccount, toAccount, 999, {from: spendingAccount});
+		}).then(assert.fail).catch(function(error){
+			assert(error.message.indexOf('revert') >= 0,'msg.value must be less than tokens tokenAvaliable');
+			return tokenInstance.transferFrom(fromAccount, toAccount, 20, {from: spendingAccount});
+		}).then(assert.fail).catch(function(error){
+			assert(error.message.indexOf('revert') >= 0,'cannot Transfer more than approved value');
+		});
+	})
 });

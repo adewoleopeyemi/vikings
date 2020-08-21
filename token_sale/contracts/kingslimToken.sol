@@ -19,7 +19,7 @@ contract kingslimToken{
 
 
 	mapping(address=>uint256) public balanceOf;
-
+	mapping(address => mapping(address=> uint256)) public allowance;
 	constructor (uint256 _initialsupply) public {
 		balanceOf[msg.sender] = _initialsupply;
 		totalSupply = _initialsupply;
@@ -39,8 +39,14 @@ contract kingslimToken{
 	}
 	
 	function approve(address _spender, uint256 _value) public returns(bool success) {
+		allowance[msg.sender][_spender] = _value;
 		emit Approval(msg.sender, _spender, _value);
 		return true;
 	}
 
+	//transfer from
+	function transferFrom(address _from, address _to, uint256 _value) public returns(bool success){
+		require(_value <= balanceOf[_from]);
+		require(_value <= allowance[_from][msg.sender]);
+	}
 }
